@@ -1,0 +1,12 @@
+package com.anyGroup.JWT_With_H2DB.repositories;
+
+import com.anyGroup.JWT_With_H2DB.entities.UserEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+@Repository
+public interface UserRepository extends JpaRepository<UserEntity, Integer> {
+    Optional<UserEntity> findByEmail(String email);
+}

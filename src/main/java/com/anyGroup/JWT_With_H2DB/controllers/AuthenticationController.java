@@ -3,7 +3,7 @@ package com.anyGroup.JWT_With_H2DB.controllers;
 import com.anyGroup.JWT_With_H2DB.entities.UserEntity;
 import com.anyGroup.JWT_With_H2DB.dto.LoginUserDto;
 import com.anyGroup.JWT_With_H2DB.dto.RegisterUserDto;
-import com.anyGroup.JWT_With_H2DB.responses.LoginResponse;
+import com.anyGroup.JWT_With_H2DB.dto.LoginResponse;
 import com.anyGroup.JWT_With_H2DB.services.AuthenticationService;
 import com.anyGroup.JWT_With_H2DB.services.JwtService;
 
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/auth")
 @RestController
 public class AuthenticationController {
+
     private final JwtService jwtService;
 
     private final AuthenticationService authenticationService;

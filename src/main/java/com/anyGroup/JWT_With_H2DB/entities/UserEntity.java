@@ -2,6 +2,7 @@ package com.anyGroup.JWT_With_H2DB.entities;
 
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
@@ -24,6 +25,10 @@ public class UserEntity implements UserDetails {
     @Column(nullable = false)
     private String password;
 
+    @OneToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false)
+    private RoleEntity role;
+
     @Override
     public boolean isAccountNonExpired() {return true;}
 
@@ -38,7 +43,11 @@ public class UserEntity implements UserDetails {
 
     // Getters and setters
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() { return List.of(); }
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + role.getName().toString());
+
+        return List.of(authority);
+    }
     @Override
     public String getUsername() { return email; }
 
@@ -53,5 +62,8 @@ public class UserEntity implements UserDetails {
 
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
+
+    public RoleEntity getRole() { return role; }
+    public void setRole(RoleEntity role) { this.role = role; }
     // Getters and setters
 }

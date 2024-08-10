@@ -1,11 +1,10 @@
-package com.anyGroup.JWT_With_H2DB.responses;
+package com.anyGroup.JWT_With_H2DB.dto;
 
 public class LoginResponse {
+
     private String token;
 
     private long expiresIn;
-
-
 
     //Getters & Setters
     public String getToken() { return token; }

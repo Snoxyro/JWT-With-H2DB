@@ -2,6 +2,7 @@ package com.anyGroup.JWT_With_H2DB.controllers;
 
 import com.anyGroup.JWT_With_H2DB.entities.UserEntity;
 import com.anyGroup.JWT_With_H2DB.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -18,9 +19,8 @@ public class UserController {
 
     private final UserService userService;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
+    @Autowired
+    public UserController(UserService userService) { this.userService = userService; }
 
     @GetMapping("/me")
     @PreAuthorize("isAuthenticated()")

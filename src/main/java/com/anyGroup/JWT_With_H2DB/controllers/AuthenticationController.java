@@ -7,6 +7,7 @@ import com.anyGroup.JWT_With_H2DB.dto.LoginResponse;
 import com.anyGroup.JWT_With_H2DB.services.AuthenticationService;
 import com.anyGroup.JWT_With_H2DB.services.JwtService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +22,7 @@ public class AuthenticationController {
 
     private final AuthenticationService authenticationService;
 
+    @Autowired
     public AuthenticationController(JwtService jwtService, AuthenticationService authenticationService) {
         this.jwtService = jwtService;
         this.authenticationService = authenticationService;
